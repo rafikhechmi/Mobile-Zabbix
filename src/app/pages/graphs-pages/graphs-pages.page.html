@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="secondary"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-text color="light">
+        <ion-text color="light" class="fw700">Ooredoo</ion-text>
+      </ion-text>
+    </ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list-header color="light">Vertical Bar Chart</ion-list-header>
+  <ion-card class="welcome-card">
+    <ion-card-header>
+      <ion-card-subtitle></ion-card-subtitle>
+      <ion-card-title></ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <table style="width:100%">
+        <tr><td>
+          <ion-item>
+            <ion-label >filter</ion-label>
+            <ion-select [(ngModel)]="selectedfilter" (ngModelChange)="onfilterChange($event)">
+              <ion-select-option *ngFor="let item of lfilter " [value]="item">
+                {{item.name}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+
+        </td></tr>
+        <tr>
+          <td>
+            <ion-item>
+              <ion-label >host group</ion-label>
+              <ion-select [(ngModel)]="selectedHostGroup" (ngModelChange)="onHostGroupChange($event)">
+                <ion-select-option *ngFor="let item of hostGroupItems " [value]="item">
+                  {{item.name}}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <ion-item>
+              <ion-label >host</ion-label>
+              <ion-select [ngModel]="selectedHost" (ngModelChange)="onHostChange($event)">
+                <ion-select-option *ngFor="let item of hostItems " [value]="item">
+                  {{item.host}}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+          </td>
+        </tr>
+      <tr>
+          <td>
+            <ion-item>
+              <ion-label >graph</ion-label>
+              <ion-select  [(ngModel)]="selectedGraph" (ngModelChange)="onGraphchange($event)">
+                <ion-select-option *ngFor="let item of graphItems " [value]="item">{{item.name}}
+                </ion-select-option>
+
+
+              </ion-select>
+
+            </ion-item>
+          </td>
+        </tr>
+      </table>
+   <ion-slides  zoom justify-content-center align-items-center style='height: 100%'>
+     <ion-slide>
+
+
+     </ion-slide>
+   </ion-slides>
+
+    </ion-card-content>
+    <ion-item>
+      <ion-label>Line chart?</ion-label>
+      <ion-toggle (ionChange)="typeChanged($event)" checked></ion-toggle>
+    </ion-item>
+  </ion-card>
+  {{chartOptions.title.text}}
+  <canvas #chart baseChart width="400" height="250"
+          [datasets]="chartData"
+          [labels]="chartLabels"
+          [options]="chartOptions"
+          [colors]="chartColors"
+          [legend]="showLegend"
+          [chartType]="chartType">
+  </canvas>
+</ion-content>
+

@@ -1,0 +1,67 @@
+<ion-content padding class="animated fadeIn login auth-page">
+  <div class="theme-bg"></div>
+  <div class="auth-content">
+
+    <!-- Logo -->
+    <div padding-horizontal text-center class="animated fadeInDown">
+      <div class="logo"></div>
+      <h4 no-margin>
+        <ion-text color="light" class="fw700">
+          Ooredoo
+        </ion-text>
+      </h4>
+    </div>
+
+    <!-- Login form -->
+    <form  class="list-form">
+{{errormsg}}
+      <ion-item no-padding class="animated fadeInUp">
+        <ion-label position="floating">
+          <ion-icon name="mail" item-start></ion-icon>
+          Zabbix Url
+        </ion-label>
+        <ion-input color="secondary" type="text" [(ngModel)]="baseUrl" [ngModelOptions]="{standalone: true}"></ion-input>
+      </ion-item>
+      <ion-item no-padding class="animated fadeInUp">
+        <ion-label position="floating">
+          <ion-icon name="mail" item-start></ion-icon>
+          Email
+        </ion-label>
+        <ion-input color="secondary" placeholder="login" [(ngModel)]="credentials.user" [ngModelOptions]="{standalone: true}"></ion-input>
+      </ion-item>
+
+
+      <ion-item no-padding class="animated fadeInUp">
+        <ion-label position="floating">
+          <ion-icon name="lock" item-start></ion-icon>
+          Password
+        </ion-label>
+        <ion-input color="secondary" type="password" placeholder="Password" [(ngModel)]="credentials.password" [ngModelOptions]="{standalone: true}"></ion-input>
+      </ion-item>
+
+    </form>
+
+
+
+    <div>
+      <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="login()"  >
+        <ion-icon name="log-in"></ion-icon>
+        Signin
+      </ion-button>
+
+
+
+
+    </div>
+
+    <!-- Other links
+    <div text-center margin-top>
+      <span (click)="goToRegister()" class="paz" tappable>
+        <ion-text color="light">
+          New here? <strong>Sign Up</strong>
+        </ion-text>
+      </span>
+    </div>
+-->
+  </div>
+</ion-content>

@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-button size="small" shape="round" (click)="closeModal()" color="tertiary">
+                <ion-icon slot="start" name="close"></ion-icon>
+                Close
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list-header color="light">Vertical Bar Chart</ion-list-header>
+    <ion-card class="welcome-card">
+        <ion-card-header>
+            <ion-card-subtitle></ion-card-subtitle>
+            <ion-card-title></ion-card-title>
+        </ion-card-header>
+        <ion-item>
+            <ion-label>Line chart?</ion-label>
+            <ion-toggle (ionChange)="typeChanged($event)" checked></ion-toggle>
+        </ion-item>
+        <ion-card-content>
+            <canvas baseChart
+                    [datasets]="chartData"
+                    [labels]="chartLabels  "
+                    [options]="chartOptions"
+                    [colors]="chartColors"
+                    [legend]="showLegend"
+                    [chartType]="chartType">
+            </canvas>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
+

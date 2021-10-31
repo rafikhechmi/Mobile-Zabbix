@@ -1,0 +1,25 @@
+.alert-checkbox-group::-webkit-scrollbar {
+  width: 1em;
+  display: block !important;
+}
+
+.alert-checkbox-group::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+.alert-checkbox-group::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+/* This will NOT work on its own */
+.select-interface-option {
+  color: red;
+}
+
+/*
+ * "my-custom-interface" needs to be passed in through
+ * the cssClass of the interface options for this to work
+ */
+.my-custom-interface .select-interface-option {
+  color: red;
+}

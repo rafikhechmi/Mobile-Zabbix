@@ -1,0 +1,81 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button color="secondary"></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            <ion-text color="light">
+                <ion-text color="light" class="fw700">Ooredoo</ion-text>
+            </ion-text>
+        </ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list-header color="light">Vertical Bar Chart</ion-list-header>
+    <ion-card class="welcome-card">
+        <ion-item>
+            <ion-label>Line chart?</ion-label>
+            <ion-toggle (ionChange)="typeChanged($event)" checked></ion-toggle>
+        </ion-item>
+        <ion-card-header>
+            <ion-card-subtitle>Number of problem</ion-card-subtitle>
+            <ion-card-title>Problem</ion-card-title>
+            <div *ngFor="let row of rs ">
+
+                {{ row.hostName }} =====>
+                {{row.result.length}}
+            </div>
+        </ion-card-header>
+        <ion-card-content>
+            <canvas baseChart
+                    [datasets]="chartData"
+                    [labels]="chartLabels"
+                    [options]="chartOptions"
+                    [colors]="chartColors"
+                    [legend]="showLegend"
+                    [chartType]="chartType">
+            </canvas>
+
+        </ion-card-content>
+
+    </ion-card>
+
+    <div *ngFor="let row of rs ">
+    <ion-grid>
+    <ion-row>
+    <div></div><ion-col>hostName :  {{ row.hostName }}</ion-col>
+        <br/>
+        <div> <ion-col>warning : {{row.warning}} </ion-col></div>
+        <br/>
+            <div><ion-col>not_classified :{{row.not_classified}}</ion-col></div>
+        <br/>
+                <div><ion-col>information :{{row.information}}</ion-col></div>
+        <br/>
+                    <div><ion-col>average :{{row.average}}</ion-col></div>
+        <br/>
+                        <div><ion-col>high :{{row.high}}</ion-col></div>
+        <br/>
+                            <div><ion-col>disaster :{{row.disaster}}</ion-col></div>
+    </ion-row>
+
+    </ion-grid>
+    </div>
+    <!--<ngx-datatable #table class="material"-->
+                   <!--[rows]="rs"-->
+                   <!--[limit]="8" [scrollbarH]="true"-->
+                   <!--[headerHeight]="50" [footerHeight]="50"-->
+                   <!--[rowHeight]="'auto'" [summaryPosition]="'bottom'"-->
+    <!--&gt;-->
+    <!--</ngx-datatable>-->
+    <!--<ngx-datatable-column name="hostName" prop="hostName" >-->
+
+        <!--&lt;!&ndash;<ng-template let-value="value" ngx-datatable-cell-template >&ndash;&gt;-->
+            <!--&lt;!&ndash;{{value }}&ndash;&gt;-->
+        <!--&lt;!&ndash;</ng-template>&ndash;&gt;-->
+    <!--</ngx-datatable-column>-->
+
+</ion-content>
+
+

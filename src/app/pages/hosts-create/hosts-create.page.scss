@@ -1,0 +1,26 @@
+.my-custom-class {
+  --background: #222;
+}
+/* DOES NOT WORK - not specific enough */
+.modal-wrapper {
+  background: #222;
+}
+
+
+/* DOES NOT WORK - not specific enough */
+.alert-wrapper {
+  background: #e5e5e5;
+}
+
+/* Works - pass "my-custom-class" in cssClass to increase specificity */
+.my-custom-class .alert-wrapper {
+  background: #f50009;
+}
+.my-custom-class {
+  --background: #e5e5e5;
+}
+
+/* Works - pass "my-custom-class" in cssClass to increase specificity */
+.my-custom-class .modal-wrapper {
+  background: #222;
+}

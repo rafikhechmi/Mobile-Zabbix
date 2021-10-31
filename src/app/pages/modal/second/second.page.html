@@ -1,0 +1,122 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-button size="small" shape="round" (click)="closeModal()" color="tertiary">
+                <ion-icon slot="start" name="close"></ion-icon>
+                Close
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true">
+    <ion-slides pager="true">
+        <ion-slide>
+            <ion-infinite-scroll>
+    <ion-item>
+        <ion-label position="floating">host name</ion-label>
+        <ion-textarea name="host" [(ngModel)]="hostParams.host"></ion-textarea>
+    </ion-item>
+    <ion-item>
+        <ion-label data-target="#temp">Groups</ion-label>
+        <ion-select multiple={true} [(ngModel)]="hostParams.groups" (ngModelChange)="showChange($event)">
+            <ion-select-option id="temp" *ngFor="let hostGroup of data " [value]="hostGroup">{{hostGroup.name}}
+            </ion-select-option>
+
+
+        </ion-select>
+
+    </ion-item>
+
+    <h2> Agent interfaces</h2>
+    <ion-item>
+        <ion-label class="fw500" color="dark">Interface type</ion-label>
+        <ion-select [(ngModel)]="hostParams.interfaces[0].type" (ngModelChange)="showChange($event)">
+            <ion-select-option [value]="1">Agent</ion-select-option>
+            <ion-select-option [value]="2">SNMP</ion-select-option>
+            <ion-select-option [value]="3">IPMI</ion-select-option>
+            <ion-select-option [value]="4">JMX</ion-select-option>
+        </ion-select>
+    </ion-item>
+
+    <BR>
+
+
+    <table style="width:100%">
+        <tr>
+
+            <td>
+                <ion-item>
+                    <ion-label position="floating"> IP address</ion-label>
+                    <ion-input [(ngModel)]="hostParams.interfaces[0].ip"></ion-input>
+                </ion-item>
+            </td>
+            <td>
+                <ion-item>
+                    <ion-label position="floating">DNS name</ion-label>
+                    <ion-input [(ngModel)]="hostParams.interfaces[0].dns"></ion-input>
+                </ion-item>
+            </td>
+            <td>
+                <ion-list>
+                    <ion-radio-group [(ngModel)]="hostParams.interfaces[0].useip">
+                        <ion-list-header>
+                            <ion-label>Connect to</ion-label>
+                        </ion-list-header>
+
+                        <ion-item>
+                            <ion-label>IP</ion-label>
+                            <ion-radio slot="start" value="1"></ion-radio>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>DNS</ion-label>
+                            <ion-radio slot="start" value="0"></ion-radio>
+                        </ion-item>
+                    </ion-radio-group>
+                </ion-list>
+            </td>
+</tr>
+        <tr>
+            <td>
+                <ion-item>
+                    <ion-label position="floating">port</ion-label>
+                    <ion-input [(ngModel)]="hostParams.interfaces[0].port"></ion-input>
+                </ion-item>
+            </td>
+
+        </tr>
+
+                </table>
+    <ion-button expand="full" color="primary" (click)="createHost()">Add host</ion-button>
+                <br />
+                <br />
+                <br />
+            </ion-infinite-scroll>
+        </ion-slide>
+
+<ion-slide>
+
+    <table style="width:100%">
+        <tr>
+
+            <td>
+                <ion-item>
+                    <ion-label >template</ion-label>
+                    <ion-select multiple={true} [ngModel]="hostParams.templates" (ngModelChange)="templatechois($event)">
+                        <ion-select-option *ngFor="let row of data2 " [value]="row">{{row.name}}
+                        </ion-select-option>
+
+
+                    </ion-select>
+
+                </ion-item>
+            </td>
+        </tr>
+    </table>
+</ion-slide>
+
+    </ion-slides>
+
+
+
+</ion-content>
